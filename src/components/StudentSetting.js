@@ -4,7 +4,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { Form, Button, Container, Alert } from "react-bootstrap";
 
 
 const StudentSetting = () => {
@@ -20,7 +19,7 @@ const StudentSetting = () => {
             return;
         }
         
-        }, []);
+        }, [reg_no,navigate]);
       
 // logout function
         const handleLogout = () => {
@@ -35,9 +34,7 @@ const [formData, setFormData] = useState({
   reg_no: "",
   password: "",
 });
- const [loading2, setLoading2] = useState(true);
 const [successMessage, setSuccess2] = useState(null);
-const [error, setError2] = useState(null);
 
 const handleChange = (e) => {
   const { name, value } = e.target;
@@ -49,13 +46,11 @@ const handleChange = (e) => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  setLoading2(true);
   setSuccess2(null);
-  setError2(null);
   const reg_no = sessionStorage.getItem('reg_no'); // Retrieve reg_no from sessionStorage
   try {
 
-    const response = await axios.put(`http://localhost:8000/api/Student_Update/${reg_no}/`, formData);
+    await axios.put(`http://localhost:8000/api/Student_Update/${reg_no}/`, formData);
     setSuccess2("Updated Password Successfully!");
     
 
@@ -63,10 +58,7 @@ const handleSubmit = async (e) => {
       window.location.reload();
     }, 2000); // 2000 milliseconds = 2 seconds
 
-  } catch (err) {
-    setError2(err.response?.data?.error || "An error occurred while updating details.");
   } finally {
-    setLoading2(false);
   }
 };
 
@@ -80,8 +72,6 @@ const handleSubmit = async (e) => {
 
 
             const [studentData, setStudentData] = useState([]);
-            const [loading, setLoading] = useState(true);
-            const [errorMessage, setErrorMessage] = useState('');
             const navigate2 = useNavigate();
         
             useEffect(() => {
@@ -92,14 +82,8 @@ const handleSubmit = async (e) => {
                         const response = await axios.get(`http://localhost:8000/api/Student_Reg/${encodedRegNo}/`);
                         setStudentData(response.data); // Save the student data
                     } catch (error) {
-                        if (error.response) {
-                            setErrorMessage(error.response.data.message || 'Failed to fetch student data.');
-                        } else {
-                            setErrorMessage('An error occurred. Please try again later.');
-                        }
-                    } finally {
-                        setLoading(false); // Stop the loading indicator
-                    }
+                        
+                    } 
                 };
         
                 fetchStudentData();

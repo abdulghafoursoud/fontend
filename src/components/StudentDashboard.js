@@ -19,7 +19,7 @@ const StudentDashboard = () => {
             return;
         }
         
-        }, []);
+        }, [reg_no,navigate]);
       
 // logout function
         const handleLogout = () => {
@@ -29,8 +29,6 @@ const StudentDashboard = () => {
     
         
             const [studentData, setStudentData] = useState([]);
-            const [loading, setLoading] = useState(true);
-            const [errorMessage, setErrorMessage] = useState('');
             const navigate2 = useNavigate();
         
             useEffect(() => {
@@ -42,12 +40,11 @@ const StudentDashboard = () => {
                         setStudentData(response.data); // Save the student data
                     } catch (error) {
                         if (error.response) {
-                            setErrorMessage(error.response.data.message || 'Failed to fetch student data.');
                         } else {
-                            setErrorMessage('An error occurred. Please try again later.');
+                            // setErrorMessage('An error occurred. Please try again later.');
                         }
                     } finally {
-                        setLoading(false); // Stop the loading indicator
+                        // setLoading(false); // Stop the loading indicator
                     }
                 };
         

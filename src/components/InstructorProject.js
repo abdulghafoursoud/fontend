@@ -489,9 +489,7 @@ const InstructorDashboard = () => {
               <td>{new Date(project.date_uploaded).toLocaleDateString()}</td>
               <td>
               
-              <span download='http://localhost:8000/api/Project/'>
-    <button>Download File</button>
-  </span>
+             
 
               <button
   className="btn btn-success"
@@ -504,16 +502,16 @@ const InstructorDashboard = () => {
               </td>
               <td>
               
-              <Link to={`/InstructorStudentView/${project.id}`}>
+              {/* <Link to={`/InstructorStudentView/${project.id}`}> */}
                  
-<button class="btn btn-primary">
+{/* <button class="btn btn-primary">
 <i class="bi bi-eye"></i> 
 </button></Link>
 &ensp;
 <button class="btn btn-warning">
 <i class="bi bi-pencil"></i> 
 </button>
-&ensp;
+&ensp; */}
 <button class="btn btn-danger" onClick={() => deleteproject(project.id)}>
 <i class="bi bi-trash"></i> 
 </button>

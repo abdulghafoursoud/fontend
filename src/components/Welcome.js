@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -62,7 +61,7 @@ const WelcomePage = () => {
             <div className="container mt-5">
       <div className="row align-items-center">
         <div className="col-md-6 text-center">
-          <img src="/home.jpg"  
+          <img src="/home.jpg"  alt=""
             className="img-fluid mb-4" 
             style={{ maxHeight: '300px', objectFit: 'cover' , borderRadius: '10px'}} // Responsive image styling
           />

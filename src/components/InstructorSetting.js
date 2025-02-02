@@ -1,6 +1,5 @@
 import React, { useEffect,useState } from "react";
 import axios from "axios";
-import { Form, Button, Container, Alert } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Link } from "react-router-dom";
 
@@ -20,7 +19,7 @@ useEffect(() => {
         return;
     }
     
-    }, []);
+    }, [email,navigate]);
   
 // logout function
     const handleLogout = () => {
@@ -33,9 +32,7 @@ useEffect(() => {
         email: "",
         password: "",
       });
-       const [loading, setLoading] = useState(true);
       const [successMessage, setSuccess] = useState(null);
-      const [error, setError] = useState(null);
     
       const handleChange = (e) => {
         const { name, value } = e.target;
@@ -47,13 +44,11 @@ useEffect(() => {
     
       const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
         setSuccess(null);
-        setError(null);
         const email = sessionStorage.getItem('email'); // Retrieve reg_no from sessionStorage
         try {
 
-          const response = await axios.put(`http://localhost:8000/api/update_admin_password/${email}/`, formData);
+          await axios.put(`http://localhost:8000/api/update_admin_password/${email}/`, formData);
           setSuccess("Updated Password Successfully!");
           
 
@@ -62,9 +57,9 @@ useEffect(() => {
           }, 2000); // 2000 milliseconds = 2 seconds
 
         } catch (err) {
-          setError(err.response?.data?.error || "An error occurred while updating details.");
+          // setError(err.response?.data?.error || "An error occurred while updating details.");
         } finally {
-          setLoading(false);
+          // setLoading(false);
         }
       };
     

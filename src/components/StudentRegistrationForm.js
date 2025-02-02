@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
+import { Form, Button, Container, Row, Col} from "react-bootstrap";
 
 const StudentRegistration = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +18,6 @@ const StudentRegistration = () => {
   });
 
   const [message, setMessage] = useState("");
-  const [variant, setVariant] = useState("danger");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -32,7 +31,6 @@ const StudentRegistration = () => {
       const response = await axios.get(`http://localhost:8000/api/check_st_reg_no/${formData.reg_no}/`);
       if (response.data.exists) {
         setMessage("Registration number already exists.");
-        setVariant("danger");
         setTimeout(() => {
             window.location.reload();
           }, 2000); // 2000 milliseconds = 2 seconds
@@ -40,7 +38,6 @@ const StudentRegistration = () => {
         // If reg_no does not exist, submit the form
         await axios.post("http://localhost:8000/api/Student/", formData);
         setMessage("Student Registration successful!");
-        setVariant("success");
         setTimeout(() => {
             window.location.reload();
           }, 2000); // 2000 milliseconds = 2 seconds
@@ -59,7 +56,6 @@ const StudentRegistration = () => {
       }
     } catch (error) {
       setMessage("An error occurred. Please try again.");
-      setVariant("danger");
     }
   };
 

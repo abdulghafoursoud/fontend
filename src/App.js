@@ -1,5 +1,4 @@
 import React from "react";
-import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Welcome from "./components/Welcome";
 import StudentRegistrationForm from "./components/StudentRegistrationForm";
@@ -7,7 +6,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import StudentLogin from "./components/StudentLogin";
 import InstructorLogin from "./components/InstructorLogin";
 import InstructorDashboard from "./components/InstructorDashboard";
-import InstructorStudentView from "./components/InstructorStudentView";
 import InstructorProject from "./components/InstructorProject";
 import StudentDashboard from "./components/StudentDashboard";
 import StudentSetting from "./components/StudentSetting";
@@ -27,7 +25,6 @@ const App = () => {
                 <Route path="/Studentlogin" element={<StudentLogin />} />
                 <Route path="/InstructorLogin" element={<InstructorLogin />} />
                 <Route path="/InstructorDashboard" element={<InstructorDashboard />} />
-                <Route path="/InstructorStudentView/:id" element={<InstructorStudentView />} />
                 <Route path="/InstructorProject" element={<InstructorProject />} />
                 <Route path="/StudentDashboard" element={<StudentDashboard />} />
                 <Route path="/StudentSetting" element={<StudentSetting />} />
