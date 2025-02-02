@@ -211,9 +211,9 @@ const InstructorDashboard = () => {
                 
                    <nav className="navbar navbar-expand-lg navbar-DarkOrange bg-DarkOrange shadow-sm" style={{background:'MediumAquamarine'}}>
                                         <div className="container">
-                                            <a className="navbar-brand" href="/">
+                                            <span className="navbar-brand">
                                                 <h3>SPSS</h3>
-                                            </a>
+                                            </span>
                                             <button
                                                 className="navbar-toggler"
                                                 type="button"
@@ -228,9 +228,9 @@ const InstructorDashboard = () => {
                                             <div className="collapse navbar-collapse" id="navbarNav">
                                                 <ul className="navbar-nav ms-auto">
                                                     <li className="nav-item">
-                                                        <a className="nav-link active">
+                                                        <span className="nav-link active">
                                                         
-                                                        </a>
+                                                        </span>
                                                         
                                                     </li>
                    
@@ -259,34 +259,34 @@ const InstructorDashboard = () => {
                                    <h3 className="text-center mb-4">Instructor Panel</h3>
                                    <ul className="nav flex-column">
                                        <li className="nav-item">
-                                           <a className="nav-link text-white">
+                                           <span className="nav-link text-white">
                                                <i className="bi bi-house-door-fill"></i> &ensp;
                                                <Link to="/InstructorDashboard" style={{ textDecoration: "none", color: "inherit" }}>
                                                 Dashboard</Link>
-                                           </a>
+                                           </span>
                                        </li>
                    
                                        <li className="nav-item">
-                                           <a className="nav-link text-white">
+                                           <span className="nav-link text-white">
                                            <Link to="/InstructorProject" style={{ textDecoration: "none", color: "inherit" }}>
                                            <i class="bi bi-folder"></i>&ensp;
                                            Projects</Link>
-                                           </a>
+                                           </span>
                                        </li>
                                        
                                        
                                        <li className="nav-item">
-                                                               <a href="" className="nav-link text-white">
+                                                               <span className="nav-link text-white">
                                                                    <i className="bi bi-gear-fill"></i> &ensp;
                                                                    <Link to="/InstructorSetting" style={{ textDecoration: "none",color:"white"}}>Settings</Link>
-                                                               </a>
+                                                               </span>
                                                            </li>
                    
                                        <li className="nav-item">
-                                           <a href="" className="nav-link text-white" onClick={handleLogout}>
+                                           <span className="nav-link text-white" onClick={handleLogout}>
                                            <i class="bi bi-box-arrow-right"></i>&ensp;
                                            Logout
-                                           </a>
+                                           </span>
                                        </li>
                                    </ul>
                                </nav>
@@ -356,11 +356,7 @@ const InstructorDashboard = () => {
                                     <td>{project.st_reg_no}</td>
                                     <td>{project.course}</td>
                                     <td>{new Date(project.date_uploaded).toLocaleDateString()}</td>
-                                    <td>
-                                        <a href={project.project_file} target="_blank" rel="noopener noreferrer">
-                                            Download
-                                        </a>
-                                    </td>
+                                    
                                     <td>
               
               <Link to={`/InstructorStudentView/${project.id}`}>
@@ -493,9 +489,9 @@ const InstructorDashboard = () => {
               <td>{new Date(project.date_uploaded).toLocaleDateString()}</td>
               <td>
               
-              <a href="#" download='http://localhost:8000/api/Project/'>
+              <span download='http://localhost:8000/api/Project/'>
     <button>Download File</button>
-  </a>
+  </span>
 
               <button
   className="btn btn-success"

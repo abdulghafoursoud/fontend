@@ -12,9 +12,9 @@ const InstructorNav = () => {
         <>
                  <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
                      <div className="container">
-                         <a className="navbar-brand">
+                         <span className="navbar-brand">
                              <h4>SPSS</h4>
-                         </a>
+                         </span>
                          <button
                              className="navbar-toggler"
                              type="button"
@@ -31,10 +31,10 @@ const InstructorNav = () => {
                                  
      
                                  <li className="nav-item">
-                                     <a className="nav-link active">
+                                     <span className="nav-link active">
                                      <Link to="/InstructorLogin" style={{ textDecoration: "none", color: "inherit" }}>
                                          Display Instructor name </Link>
-                                     </a>
+                                     </span>
                                  </li>
                                  
                            
@@ -52,28 +52,28 @@ const InstructorNav = () => {
                 <h3 className="text-center mb-4">Instructor Panel</h3>
                 <ul className="nav flex-column">
                     <li className="nav-item">
-                        <a href="#" className="nav-link text-white">
+                        <span className="nav-link text-white">
                             <i className="bi bi-house-door-fill"></i> Dashboard
-                        </a>
+                        </span>
                     </li>
 
                     <li className="nav-item">
-                        <a href="#" className="nav-link text-white">
+                        <span className="nav-link text-white">
                         <i class="bi bi-folder"></i> Projects
-                        </a>
+                        </span>
                     </li>
                     
                     
                     <li className="nav-item">
-                        <a href="#" className="nav-link text-white">
+                        <span className="nav-link text-white">
                             <i className="bi bi-gear-fill"></i> Settings
-                        </a>
+                        </span>
                     </li>
 
                     <li className="nav-item">
-                        <a href="#" className="nav-link text-white">
+                        <span className="nav-link text-white">
                         <i class="bi bi-box-arrow-right"></i> Logout
-                        </a>
+                        </span>
                     </li>
                 </ul>
             </nav>

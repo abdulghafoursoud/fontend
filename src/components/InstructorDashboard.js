@@ -141,9 +141,9 @@ const InstructorDashboard = () => {
                  
                  <nav className="navbar navbar-expand-lg navbar-DarkOrange bg-DarkOrange shadow-sm" style={{background:'MediumAquamarine'}}>
                      <div className="container">
-                         <a className="navbar-brand" href="/">
+                         <span className="navbar-brand">
                              <h3>SPSS</h3>
-                         </a>
+                         </span>
                          <button
                              className="navbar-toggler"
                              type="button"
@@ -158,9 +158,9 @@ const InstructorDashboard = () => {
                          <div className="collapse navbar-collapse" id="navbarNav">
                              <ul className="navbar-nav ms-auto">
                                  <li className="nav-item">
-                                     <a className="nav-link active">
+                                     <span className="nav-link active">
                                      
-                                     </a>
+                                     </span>
                                      
                                  </li>
 
@@ -189,34 +189,34 @@ const InstructorDashboard = () => {
                 <h3 className="text-center mb-4">Instructor Panel</h3>
                 <ul className="nav flex-column">
                     <li className="nav-item">
-                        <a className="nav-link text-white">
+                        <span className="nav-link text-white">
                             <i className="bi bi-house-door-fill"></i> &ensp;
                             <Link to="/InstructorDashboard" style={{ textDecoration: "none", color: "inherit" }}>
                              Dashboard</Link>
-                        </a>
+                        </span>
                     </li>
 
                     <li className="nav-item">
-                        <a className="nav-link text-white">
+                        <span className="nav-link text-white">
                         <Link to="/InstructorProject" style={{ textDecoration: "none", color: "inherit" }}>
                         <i class="bi bi-folder"></i>&ensp;
                         Projects</Link>
-                        </a>
+                        </span>
                     </li>
                     
                     
                     <li className="nav-item">
-                        <a href="" className="nav-link text-white">
+                        <span className="nav-link text-white">
                             <i className="bi bi-gear-fill"></i> &ensp;
                             <Link to="/InstructorSetting" style={{ textDecoration: "none",color:"white"}}>Settings</Link>
-                        </a>
+                        </span>
                     </li>
 
                     <li className="nav-item">
-                        <a href="" className="nav-link text-white" onClick={handleLogout}>
+                        <span className="nav-link text-white" onClick={handleLogout}>
                         <i class="bi bi-box-arrow-right"></i>&ensp;
                         Logout
-                        </a>
+                        </span>
                     </li>
                 </ul>
             </nav>
@@ -325,56 +325,7 @@ const InstructorDashboard = () => {
     </div> */} 
 
      
-
-    <footer className="bg-dark text-white py-3 mt-5"  style={{ marginBottom:"0px" }}>
-      <div className="container">
-        <div className="row">
-          <div className="col-12 col-md-4">
-            <h5>About Us</h5>
-            <p>
-              "OSPSS for the best and secure online platform we store students projcts via online"
-            </p>
-          </div>
-          <div className="col-12 col-md-4">
-            <h5>Links</h5>
-            <ul className="list-unstyled">
-              <li>
-                <a href="#" className="text-white">Home</a>
-              </li>
-              <li>
-                <a href="#" className="text-white">About</a>
-              </li>
-              <li>
-                <a href="#" className="text-white">Services</a>
-              </li>
-              <li>
-                <a href="#" className="text-white">Contact</a>
-              </li>
-            </ul>
-          </div>
-          <div className="col-12 col-md-4">
-            <h5>Contact</h5>
-            <ul className="list-unstyled">
-              <li>
-                <i className="bi bi-house-door-fill"></i> Mw/Kwerekwe Zanzibar
-              </li>
-              <li>
-                <i className="bi bi-telephone-fill"></i> +255 657440597
-              </li>
-              <li>
-                <i className="bi bi-envelope-fill"></i> soudabdulghafour@gmail.com
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="text-center py-3">
-        <small>&copy; 2025 OSPSS All rights reserved.</small>
-      </div>
-    </footer>
-
-                
-            </div>
+</div>
         </div>
 
 
