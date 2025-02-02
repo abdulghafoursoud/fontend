@@ -9,8 +9,6 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 const InstructorDashboard = () => {
 
   const [count, setCount] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
         // Function to fetch diploma student count
@@ -19,10 +17,8 @@ const InstructorDashboard = () => {
                 const response = await axios.get('http://localhost:8000/api/count-diploma-students/');
                 setCount(response.data.diploma_students_count);
             } catch (err) {
-                setError('Error fetching data');
-            } finally {
-                setLoading(false);
-            }
+                
+            } 
         };
 
         fetchDiplomaCount();
@@ -31,8 +27,6 @@ const InstructorDashboard = () => {
 
 
     const [count2, setCount2] = useState(null);
-    const [loading2, setLoading2] = useState(true);
-    const [error2, setError2] = useState(null);
 
     useEffect(() => {
         // Function to fetch degree student count
@@ -40,10 +34,7 @@ const InstructorDashboard = () => {
             try {
                 const response = await axios.get('http://localhost:8000/api/count-degree-students/');
                 setCount2(response.data.degree_students_count);
-            } catch (err) {
-                setError2('Error fetching data');
             } finally {
-                setLoading2(false);
             }
         };
 
@@ -120,7 +111,7 @@ const InstructorDashboard = () => {
             return;
         }
         
-        }, []);
+        }, [email, navigate]);
       
 // logout function
         const handleLogout = () => {
