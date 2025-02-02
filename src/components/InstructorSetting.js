@@ -1,0 +1,295 @@
+import React, { useEffect,useState } from "react";
+import axios from "axios";
+import { Form, Button, Container, Alert } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link } from "react-router-dom";
+
+
+
+const UpdatePassword = () => {
+
+    
+// instructor should login to access this page
+const navigate = useNavigate(); 
+const email = sessionStorage.getItem('email'); 
+
+useEffect(() => {    
+    if (!email) {
+        console.error('No email found in sessionStorage');
+        navigate('/InstructorLogin');
+        return;
+    }
+    
+    }, []);
+  
+// logout function
+    const handleLogout = () => {
+        sessionStorage.clear(); 
+        navigate('/InstructorLogin');
+    };
+
+      // update student info 
+      const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+      });
+       const [loading, setLoading] = useState(true);
+      const [successMessage, setSuccess] = useState(null);
+      const [error, setError] = useState(null);
+    
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+          ...formData,
+          [name]: value,
+        });
+      };
+    
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setSuccess(null);
+        setError(null);
+        const email = sessionStorage.getItem('email'); // Retrieve reg_no from sessionStorage
+        try {
+
+          const response = await axios.put(`http://localhost:8000/api/update_admin_password/${email}/`, formData);
+          setSuccess("Updated Password Successfully!");
+          
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000); // 2000 milliseconds = 2 seconds
+
+        } catch (err) {
+          setError(err.response?.data?.error || "An error occurred while updating details.");
+        } finally {
+          setLoading(false);
+        }
+      };
+    
+        
+
+  return (
+    <>
+
+
+<nav className="navbar navbar-expand-lg navbar-DarkOrange bg-DarkOrange shadow-sm" style={{background:'MediumAquamarine'}}>
+                     <div className="container">
+                         <a className="navbar-brand" href="/">
+                             <h3>SPSS</h3>
+                         </a>
+                         <button
+                             className="navbar-toggler"
+                             type="button"
+                             data-bs-toggle="collapse"
+                             data-bs-target="#navbarNav"
+                             aria-controls="navbarNav"
+                             aria-expanded="false"
+                             aria-label="Toggle navigation"
+                         >
+                             <span className="navbar-toggler-icon"></span>
+                         </button>
+                         <div className="collapse navbar-collapse" id="navbarNav">
+                             <ul className="navbar-nav ms-auto">
+                                 <li className="nav-item">
+                                     <a className="nav-link active">
+                                     
+                                     </a>
+                                     
+                                 </li>
+
+                                
+                                 
+                                 
+                                
+     
+     
+     
+                                 
+                             </ul>
+                         </div>
+                     </div>
+                 </nav>
+
+
+
+
+                  <div className="d-flex">
+            {/* Sidebar */} 
+            <nav
+                className="bg-Salmon text-white p-3"
+                style={{ minHeight: "100vh", width: "250px",background:"Salmon"}}
+            >
+                <h3 className="text-center mb-4">Instructor Panel</h3>
+                <ul className="nav flex-column">
+                    <li className="nav-item">
+                        <a className="nav-link text-white">
+                            <i className="bi bi-house-door-fill"></i> &ensp;
+                            <Link to="/InstructorDashboard" style={{ textDecoration: "none", color: "inherit" }}>
+                             Dashboard</Link>
+                        </a>
+                    </li>
+
+                    <li className="nav-item">
+                        <a className="nav-link text-white">
+                        <Link to="/InstructorProject" style={{ textDecoration: "none", color: "inherit" }}>
+                        <i class="bi bi-folder"></i>&ensp;
+                        Projects</Link>
+                        </a>
+                    </li>
+                    
+                    
+                    <li className="nav-item">
+                        <a href="" className="nav-link text-white">
+                            <i className="bi bi-gear-fill"></i> &ensp;
+                            <Link to="/InstructorSetting" style={{ textDecoration: "none",color:"white"}}>Settings</Link>
+                        </a>
+                    </li>
+
+                    <li className="nav-item">
+                        <a href="" className="nav-link text-white" onClick={handleLogout}>
+                        <i class="bi bi-box-arrow-right"></i>&ensp;
+                        Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
+                
+
+            
+
+            <div className="flex-grow-1 p-4">
+
+
+            <div class="card" style={{border:'none'}}>
+            <div class="card-body" style={{background:'MediumAquamarine',border:'none'}}>
+             
+              <nav>
+                <ol class="breadcrumb" style={{color:'white'}}>
+                <li class="breadcrumb-item"><Link to="/InstructorDashboard" style={{ textDecoration: "none",color:"black"}}>Home</Link></li>
+                <li class="breadcrumb-item"><Link to="/InstructorProject" style={{ textDecoration: "none",color:"black"}}>Projects</Link></li>
+                <li class="breadcrumb-item"><Link to="/InstructorSetting" style={{ textDecoration: "none",color:"black"}}>Account Settings</Link></li>
+                <li class="breadcrumb-item" onClick={handleLogout} style={{cursor:'pointer',color:'black'}}>Logout</li>
+
+                </ol>
+              </nav>
+            </div>
+                
+               
+
+        
+            {successMessage && (
+          <div
+            className="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3"
+            role="alert"
+            style={{ zIndex: 1050 }}
+          >
+            <i
+              className="bi bi-check-circle-fill"
+              style={{ fontSize: "18px", color: "green" }}
+            ></i>{" "}
+            &nbsp; {successMessage} &nbsp;
+           
+          </div>
+        )}
+
+
+            <div className="container mt-5" style={{width:'80%',padding:'20px',
+                float:'left',border:'1px solid lightgray',borderRadius:'5px'}}>
+                  <h2>Update Password</h2>
+                  <form onSubmit={handleSubmit}>
+                  <div className="mb-3">
+                      <label htmlFor="email" className="form-label">Email</label>
+                      <input
+                        type="email" readOnly
+                        className="form-control" placeholder="Enter New Email"
+                        id="email" name="email"
+                        value={email}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label htmlFor="password" className="form-label">New Password</label>
+                      <input
+                        type="password"
+                        className="form-control" placeholder="Set New Password"
+                        id="password" name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    
+                    <button type="submit" className="btn btn-primary">Update Information</button>
+                  </form>
+                </div>
+             
+
+           
+                </div>
+
+        
+
+
+     
+
+    <footer className="bg-dark text-white py-3 mt-5"  style={{ marginBottom:"0px" }}>
+      <div className="container">
+        <div className="row">
+          <div className="col-12 col-md-4">
+            <h5>About Us</h5>
+            <p>
+              "OSPSS for the best and secure online platform we store students projcts via online"
+            </p>
+          </div>
+          <div className="col-12 col-md-4">
+            <h5>Links</h5>
+            <ul className="list-unstyled">
+              <li>
+                <a href="#" className="text-white">Home</a>
+              </li>
+              <li>
+                <a href="#" className="text-white">About</a>
+              </li>
+              <li>
+                <a href="#" className="text-white">Services</a>
+              </li>
+              <li>
+                <a href="#" className="text-white">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div className="col-12 col-md-4">
+            <h5>Contact</h5>
+            <ul className="list-unstyled">
+              <li>
+                <i className="bi bi-house-door-fill"></i> Mw/Kwerekwe Zanzibar
+              </li>
+              <li>
+                <i className="bi bi-telephone-fill"></i> +255 657440597
+              </li>
+              <li>
+                <i className="bi bi-envelope-fill"></i> soudabdulghafour@gmail.com
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="text-center py-3">
+        <small>&copy; 2025 OSPSS All rights reserved.</small>
+      </div>
+    </footer>
+
+                
+            </div>
+        </div>
+
+
+    
+    </>
+  );
+};
+
+export default UpdatePassword;
